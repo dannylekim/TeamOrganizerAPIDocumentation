@@ -1,73 +1,40 @@
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to Team Organizer's API Reference. Here you can find the API references for the service to use if you're a developer wanting to use our API calls. 
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+We only have language bindings for javascript at the moment which will be on the tabs to the right as you scroll down the documentation.
 
 # Authentication
 
-> To authorize, use this code:
+Team Organizer uses JSON Web Tokens as a means to pass from request to request with passport as the middleware. In this manner, you're able to have a secure method into all API Routes. Therefore, Team Organizer expects this to be in all your Authorization headesr
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```bash
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+`Authorization: Bearer Token`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>Token </code> with token gained from logging in.
 </aside>
 
-# Kittens
+## Login
+
+```json
+{
+  username: "Username",
+  password: "Password"
+}
+
+``` 
+
+> the above command returns a JSON structured like so: 
+
+```json
+{
+  message: "Login Successful",
+  token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhMDhhZjQ4NDBiNDI5MjQ4Y2Q0YzQ2ZSIsImlhdCI6MTUxMDUyMDE2OH0.WFydp-dRHJiw3532rveMTNp9bxas9kMIDB81M5o5hfs"
+}
+```
 
 ## Get All Kittens
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```bash
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
 
 ```javascript
 const kittn = require('kittn');
