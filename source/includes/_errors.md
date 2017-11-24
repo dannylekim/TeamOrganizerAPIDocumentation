@@ -1,20 +1,20 @@
 # Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+<aside class="notice">These are just general error codes. Please make sure you read the errors for each api call individually and use this only as a quick reference.</aside>
 
-The Kittn API uses the following error codes:
+The Team Organizer API uses the following error codes:
 
 
 Error Code | Meaning
 ---------- | -------
 400 | Bad Request -- Your request sucks
-401 | Unauthorized -- Your API key is wrong
-403 | Forbidden -- The kitten requested is hidden for administrators only
-404 | Not Found -- The specified kitten could not be found
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method
+401 | Unauthorized -- You need a token 
+403 | Forbidden -- The method requested is hidden for administrators only
+404 | Not Found -- The specified request could not be found
+405 | Method Not Allowed -- You tried to access a call with an invalid method
 406 | Not Acceptable -- You requested a format that isn't json
-410 | Gone -- The kitten requested has been removed from our servers
+410 | Gone -- The object requested has been removed from our servers
 418 | I'm a teapot
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
+429 | Too Many Requests -- You're requesting too many things! Slow down!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarially offline for maintanance. Please try again later.
