@@ -7,6 +7,7 @@ language_tabs:
 
 includes:
   - main
+  - users
   - _errors
 
 search: true
