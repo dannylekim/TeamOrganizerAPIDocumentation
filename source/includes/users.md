@@ -183,23 +183,93 @@ Code | Message | Description
 
 <aside class="notice">** This is an Admin route! **</aside>
 
-Allows the administrator to remove the user from the database and remove the user from all of his groups and his tasks. 
+Allows the administrator to remove the user from the database and remove the user from all of his groups and his tasks.  Requires [Authorization] header with an admin token.
 
 ## Update User Information 
 
-Allows the user to update information about themselves. Specifically: First Name, Last Name and Email 
+Allows the user to update information about themselves. Specifically: First Name, Last Name and Email. Requires the [Authorization] header with a token.
 
 ### HTTP Request 
 
+> Here is an example request body, you need only 1 field to have a valid request.
+
+```javascript
+{
+  firstName: "Team",
+  lastName: "Organizer", 
+  email: "teamOrganizer@mail.com"
+}
+```
+
+> Here is the return value: 
+
+```javascript
+{
+  message: "Successfully updated the user's information."
+}
+```
+
 `PUT http://localhost:4000/users/:userId`
+
+### Query Parameters
+
+Parameter | Default | Required | Type | Description
+---------| --------| ----------| -----| ---------|
+firstName | | false | String | The new first name of the user.
+lastName | | false | String | The new last name of the user.
+email | | false | String | The new email of the user.
+
+
 
 ### Returns and Errors
 
 Code | Message | Description
 -----| --------| ----------|
-200 | Cast to ObjectId failed for value "5a16253bdf50e73c4" at path "_id" for model "User" | There's an incorrect ID
+200 | Successfully updated the user's information.  | Succesful request and updated the user.
+200 | Cast to ObjectId failed for value "" at path "_id" for model "User" | There's an incorrect ID in the userId
+200 | You need to change at least one thing! | User has an empty body for a request.
 
 
 
+<aside class="warning"> Remember that you need to have at least 1 parameter to consider this a valid request! </aside>
 
+## Change User Password
+
+Allows the user to change their password to another one. Requires an [Authorization] header with a token.
+
+> Here is how the body of request would look like 
+
+```javascript
+{
+  password: "newPassword"
+}
+```
+
+> Here is what the return of the request would be: 
+
+```javascript
+{
+  message: "Password has successfully been changed"
+}
+```
+
+
+
+### HTTP Request
+
+`PUT localhost:4000/changePassword/:userId`
+
+### Query Parameters
+
+Parameter | Default | Required | Type | Description
+--------| ----------| ---------| -----| ----------|
+password | | true | String | The new password for the user
+
+### Returns and errors 
  
+ Code | Message | Description 
+ ----| -----------| ---------|
+ 200 | Password has successfully been changed | The request has been accepted and password has been changed. 
+ 200 | Please input a password | Empty body request
+ 200 | Please input a new password | The password is the same as the previous
+ 200 | Cast to ObjectId failed for value "" at path "_id" for model "User" | Sent an incorrect ID as the userId
