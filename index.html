@@ -31,15 +31,14 @@
         <h1 id="introduction">Introduction</h1>
         <p>Welcome to Team Organizer&#39;s API Reference. Here you can find the API references for the service to use if you&#39;re a developer wanting to use our API calls. </p>
         <p>We only have language bindings for javascript at the moment which will be on the tabs to the right as you scroll down the documentation.</p>
-        <h1 id="authentication">Authentication</h1> <pre class="highlight javascript"><code>
-<span class="hljs-string">"Welcome to Team Organizer API! Let's get started"</span></code></pre>
+        <h1 id="authentication">Authentication</h1> <pre class="highlight javascript"><code><span class="hljs-string">"Welcome to Team Organizer API! Let's get started"</span>;</code></pre>
         <p>Team Organizer uses JSON Web Tokens as a means to pass from request to request with passport as the middleware. In this manner, you&#39;re able to have a secure method into all API Routes. Therefore, Team Organizer expects this to be in all your
           Authorization headesr</p>
         <p><code>Authorization: Bearer Token</code></p>
         <aside class="notice"> You must replace <code>Token </code> with token gained from logging in. </aside>
         <h2 id="login">Login</h2>
         <blockquote>
-          <p>Here is the body of the request </p>
+          <p>Here is the body of the request</p>
         </blockquote> <pre class="highlight javascript"><code>{
   <span class="hljs-attr">username</span>: <span class="hljs-string">"Username"</span>,
   <span class="hljs-attr">password</span>: <span class="hljs-string">"Password"</span>
@@ -116,19 +115,19 @@
             </tr>
           </tbody>
         </table>
-        <h1 id="user-apis">User APIs</h1>
+        <h1 id="users">Users</h1>
         <h2 id="sign-up">Sign up</h2>
         <blockquote>
           <p>Here is the minimum body for the request</p>
         </blockquote> <pre class="highlight javascript"><code>{
   <span class="hljs-attr">email</span>:
-  username: 
+  username:
   firstName:
   lastName:
-  password: 
+  password:
 }</code></pre>
         <blockquote>
-          <p>On succesful user creation, the return is as follows: </p>
+          <p>On succesful user creation, the return is as follows:</p>
         </blockquote> <pre class="highlight javascript"><code>{
     <span class="hljs-string">"__v"</span>: <span class="hljs-number">0</span>,
     <span class="hljs-string">"email"</span>: <span class="hljs-string">"test@mail.com"</span>,
@@ -151,7 +150,7 @@
               <th>Default</th>
               <th>Required</th>
               <th>Type</th>
-              <th>Description </th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
@@ -167,7 +166,7 @@
               <td></td>
               <td>true</td>
               <td>String</td>
-              <td>The username that the user wants to sign up with </td>
+              <td>The username that the user wants to sign up with</td>
             </tr>
             <tr>
               <td>firstName</td>
@@ -188,7 +187,7 @@
               <td></td>
               <td>true</td>
               <td>String</td>
-              <td>User&#39;s inputted password. Password will be salted and hashed. </td>
+              <td>User&#39;s inputted password. Password will be salted and hashed.</td>
             </tr>
             <tr>
               <td>role</td>
@@ -202,14 +201,14 @@
               <td>Time of request</td>
               <td>false</td>
               <td>Date</td>
-              <td>The date-time of the user&#39;s creation </td>
+              <td>The date-time of the user&#39;s creation</td>
             </tr>
             <tr>
               <td>groups</td>
               <td>[ ]</td>
               <td>false</td>
               <td>Array</td>
-              <td>Groups that user is part of, default is none. </td>
+              <td>Groups that user is part of, default is none.</td>
             </tr>
             <tr>
               <td>notifications</td>
@@ -226,20 +225,22 @@
             <tr>
               <th>Code</th>
               <th>Message</th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>200</td>
               <td>Returns the user object successfully.</td>
+              <td>The request was successful.</td>
             </tr>
             <tr>
               <td>200</td>
-              <td>Too many characters. Password must not be over 160 characters. </td>
+              <td>Too many characters. Password must not be over 160 characters.</td>
             </tr>
             <tr>
               <td>200</td>
-              <td>Password must contain at least a numeric character. </td>
+              <td>Password must contain at least a numeric character.</td>
             </tr>
             <tr>
               <td>200</td>
@@ -247,15 +248,15 @@
             </tr>
             <tr>
               <td>200</td>
-              <td>Password must contain at least an upper case character. </td>
+              <td>Password must contain at least an upper case character.</td>
             </tr>
             <tr>
               <td>200</td>
-              <td>Password must contain at least a symbol character. </td>
+              <td>Password must contain at least a symbol character.</td>
             </tr>
             <tr>
               <td>200</td>
-              <td>A user with this username already exists, please choose another one. </td>
+              <td>A user with this username already exists, please choose another one.</td>
             </tr>
             <tr>
               <td>200</td>
@@ -265,39 +266,35 @@
         </table>
         <h2 id="get-all-users">Get All Users</h2>
         <blockquote>
-          <p>Returns as follows: </p>
+          <p>Returns as follows:</p>
         </blockquote> <pre class="highlight javascript"><code>[
   {
-        <span class="hljs-string">"_id"</span>: <span class="hljs-string">"5a0bda228918facb5f6"</span>,
-        <span class="hljs-string">"email"</span>: <span class="hljs-string">"test@mail.com"</span>,
-        <span class="hljs-string">"username"</span>: <span class="hljs-string">"test"</span>,
-        <span class="hljs-string">"firstName"</span>: <span class="hljs-string">"test"</span>,
-        <span class="hljs-string">"lastName"</span>: <span class="hljs-string">"test"</span>,
-        <span class="hljs-string">"password"</span>: <span class="hljs-string">"$2a$10$G6r06l832j1o2jks0.uXnNwSkFX3nJXS"</span>,
-        <span class="hljs-string">"__v"</span>: <span class="hljs-number">0</span>,
-        <span class="hljs-string">"createdDate"</span>: [],
-        <span class="hljs-string">"notifications"</span>: [],
-        <span class="hljs-string">"groups"</span>: [],
-        <span class="hljs-string">"role"</span>: [
-            <span class="hljs-string">"user"</span>
-        ]
-    },
-      {
-        <span class="hljs-string">"_id"</span>: <span class="hljs-string">"5a0aks0gia2wa228918facb5f6"</span>,
-        <span class="hljs-string">"email"</span>: <span class="hljs-string">"test2@mail.com"</span>,
-        <span class="hljs-string">"username"</span>: <span class="hljs-string">"test2"</span>,
-        <span class="hljs-string">"firstName"</span>: <span class="hljs-string">"test2"</span>,
-        <span class="hljs-string">"lastName"</span>: <span class="hljs-string">"test2"</span>,
-        <span class="hljs-string">"password"</span>: <span class="hljs-string">"$2a$10$0910285102.uXnNwSkFX3nJXS"</span>,
-        <span class="hljs-string">"__v"</span>: <span class="hljs-number">0</span>,
-        <span class="hljs-string">"createdDate"</span>: [],
-        <span class="hljs-string">"notifications"</span>: [],
-        <span class="hljs-string">"groups"</span>: [],
-        <span class="hljs-string">"role"</span>: [
-            <span class="hljs-string">"admin"</span>
-        ]
-    },
-]</code></pre>
+    <span class="hljs-attr">_id</span>: <span class="hljs-string">"5a0bda228918facb5f6"</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">"test@mail.com"</span>,
+    <span class="hljs-attr">username</span>: <span class="hljs-string">"test"</span>,
+    <span class="hljs-attr">firstName</span>: <span class="hljs-string">"test"</span>,
+    <span class="hljs-attr">lastName</span>: <span class="hljs-string">"test"</span>,
+    <span class="hljs-attr">password</span>: <span class="hljs-string">"$2a$10$G6r06l832j1o2jks0.uXnNwSkFX3nJXS"</span>,
+    <span class="hljs-attr">__v</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">createdDate</span>: [],
+    <span class="hljs-attr">notifications</span>: [],
+    <span class="hljs-attr">groups</span>: [],
+    <span class="hljs-attr">role</span>: [<span class="hljs-string">"user"</span>]
+  },
+  {
+    <span class="hljs-attr">_id</span>: <span class="hljs-string">"5a0aks0gia2wa228918facb5f6"</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">"test2@mail.com"</span>,
+    <span class="hljs-attr">username</span>: <span class="hljs-string">"test2"</span>,
+    <span class="hljs-attr">firstName</span>: <span class="hljs-string">"test2"</span>,
+    <span class="hljs-attr">lastName</span>: <span class="hljs-string">"test2"</span>,
+    <span class="hljs-attr">password</span>: <span class="hljs-string">"$2a$10$0910285102.uXnNwSkFX3nJXS"</span>,
+    <span class="hljs-attr">__v</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">createdDate</span>: [],
+    <span class="hljs-attr">notifications</span>: [],
+    <span class="hljs-attr">groups</span>: [],
+    <span class="hljs-attr">role</span>: [<span class="hljs-string">"admin"</span>]
+  }
+];</code></pre>
         <aside class="notice">
           <strong>This is an Admin route! </strong>
         </aside>
@@ -310,7 +307,7 @@
             <tr>
               <th>Code</th>
               <th>Message</th>
-              <th>Description </th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
@@ -318,19 +315,16 @@
               <td>200</td>
               <td>Array of Objects</td>
               <td>Returns all the users in the database.</td>
-              <td></td>
             </tr>
             <tr>
               <td>403</td>
               <td>Access denied. User has no admin privileges.</td>
               <td>Token does not possess administrator privileges.</td>
-              <td></td>
             </tr>
             <tr>
               <td>401</td>
               <td>Unauthorized</td>
-              <td>Means that there was not JWT placed into the authorization header.</td>
-              <td></td>
+              <td>Means that there was no JWT placed into the authorization header.</td>
             </tr>
           </tbody>
         </table>
@@ -346,13 +340,13 @@
           <p>Here is an example request body, you need only 1 field to have a valid request.</p>
         </blockquote> <pre class="highlight javascript"><code>{
   <span class="hljs-attr">firstName</span>: <span class="hljs-string">"Team"</span>,
-  <span class="hljs-attr">lastName</span>: <span class="hljs-string">"Organizer"</span>, 
+  <span class="hljs-attr">lastName</span>: <span class="hljs-string">"Organizer"</span>,
   <span class="hljs-attr">email</span>: <span class="hljs-string">"teamOrganizer@mail.com"</span>
 }</code></pre>
         <blockquote>
-          <p>Here is the return value: </p>
+          <p>Here is the return value:</p>
         </blockquote> <pre class="highlight javascript"><code>{
-  <span class="hljs-attr">message</span>: <span class="hljs-string">"Successfully updated the user's information."</span>
+  <span class="hljs-attr">message</span>: <span class="hljs-string">"Successfully updated the user's information."</span>;
 }</code></pre>
         <p><code>PUT http://localhost:4000/users/:userId</code></p>
         <h3 id="query-parameters">Query Parameters</h3>
@@ -421,14 +415,14 @@
         <h2 id="change-user-password">Change User Password</h2>
         <p>Allows the user to change their password to another one. Requires an [Authorization] header with a token.</p>
         <blockquote>
-          <p>Here is how the body of request would look like </p>
+          <p>Here is how the body of request would look like</p>
         </blockquote> <pre class="highlight javascript"><code>{
-  <span class="hljs-attr">password</span>: <span class="hljs-string">"newPassword"</span>
+  <span class="hljs-attr">password</span>: <span class="hljs-string">"newPassword"</span>;
 }</code></pre>
         <blockquote>
-          <p>Here is what the return of the request would be: </p>
+          <p>Here is what the return of the request would be:</p>
         </blockquote> <pre class="highlight javascript"><code>{
-  <span class="hljs-attr">message</span>: <span class="hljs-string">"Password has successfully been changed"</span>
+  <span class="hljs-attr">message</span>: <span class="hljs-string">"Password has successfully been changed"</span>;
 }</code></pre>
         <h3 id="http-request">HTTP Request</h3>
         <p><code>PUT localhost:4000/changePassword/:userId</code></p>
@@ -459,29 +453,453 @@
             <tr>
               <th>Code</th>
               <th>Message</th>
-              <th>Description </th>
+              <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td> 200</td>
+              <td>200</td>
               <td>Password has successfully been changed</td>
-              <td>The request has been accepted and password has been changed. </td>
+              <td>The request has been accepted and password has been changed.</td>
             </tr>
             <tr>
-              <td> 200</td>
+              <td>200</td>
               <td>Please input a password</td>
               <td>Empty body request</td>
             </tr>
             <tr>
-              <td> 200</td>
+              <td>200</td>
               <td>Please input a new password</td>
               <td>The password is the same as the previous</td>
             </tr>
             <tr>
-              <td> 200</td>
+              <td>200</td>
               <td>Cast to ObjectId failed for value &quot;&quot; at path &quot;_id&quot; for model &quot;User&quot;</td>
               <td>Sent an incorrect ID as the userId</td>
+            </tr>
+          </tbody>
+        </table>
+        <h1 id="groups">Groups</h1>
+        <h2 id="get-all-groups">Get all Groups</h2>
+        <blockquote>
+          <p>Here is the return:</p>
+        </blockquote> <pre class="highlight javascript"><code>[
+  {
+    <span class="hljs-attr">_id</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">category</span>: <span class="hljs-string">"group"</span>,
+    <span class="hljs-attr">__v</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">teamLeader</span>: {
+      <span class="hljs-attr">leaderId</span>: <span class="hljs-string">""</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">""</span>
+    },
+    <span class="hljs-attr">createdDate</span>: <span class="hljs-string">"2017-11-27T04:32:21.267Z"</span>,
+    <span class="hljs-attr">users</span>: [
+      {
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">taskId</span>: []
+      },
+      {
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">"General"</span>,
+        <span class="hljs-attr">taskId</span>: [<span class="hljs-string">""</span>]
+      }
+    ]
+  }
+];</code></pre>
+        <aside class="notice">
+          <strong>This is an Admin route! </strong>
+        </aside>
+        <p>Gets all the groups in the database. Requires [Authorization] admin token.</p>
+        <h3 id="http-request">HTTP Request</h3>
+        <p><code>GET http://localhost:4000/groups</code></p>
+        <h3 id="returns-and-errors">Returns and Errors</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Message</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>200</td>
+              <td>Array of Objects</td>
+              <td>Returns all the groups in the database.</td>
+            </tr>
+            <tr>
+              <td>403</td>
+              <td>Access denied. User has no admin privileges.</td>
+              <td>Token does not possess administrator privileges.</td>
+            </tr>
+            <tr>
+              <td>401</td>
+              <td>Unauthorized</td>
+              <td>Means that there was no JWT placed into the authorization header.</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="create-group">Create Group</h2>
+        <blockquote>
+          <p>Here is the body of the request: </p>
+        </blockquote> <pre class="highlight javascript"><code></code></pre>
+        <blockquote>
+          <p>Here is the return value: </p>
+        </blockquote> <pre class="highlight javascript"><code></code></pre>
+        <p>Creates the group in the specified user. Requires [Authorization] token. </p>
+        <h3 id="http-request">HTTP Request</h3>
+        <h3 id="query-parameters">Query Parameters</h3>
+        <h3 id="returns-and-errors">Returns and Errors</h3>
+        <h2 id="get-group">Get Group</h2>
+        <blockquote>
+          <p>Here is the return:</p>
+        </blockquote> <pre class="highlight javascript"><code>  {
+    <span class="hljs-attr">_id</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">category</span>: <span class="hljs-string">"group"</span>,
+    <span class="hljs-attr">__v</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-attr">teamLeader</span>: {
+      <span class="hljs-attr">leaderId</span>: <span class="hljs-string">""</span>,
+      <span class="hljs-attr">name</span>: <span class="hljs-string">""</span>
+    },
+    <span class="hljs-attr">createdDate</span>: <span class="hljs-string">"2017-11-27T04:32:21.267Z"</span>,
+    <span class="hljs-attr">users</span>: [
+      {
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">""</span>,
+        <span class="hljs-attr">taskId</span>: []
+      },
+      {
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">"General"</span>,
+        <span class="hljs-attr">taskId</span>: [<span class="hljs-string">""</span>]
+      }
+    ]
+  }</code></pre>
+        <p>Gets the specified group. Requires [Authorization] token.</p>
+        <h3 id="http-request">HTTP Request</h3>
+        <p><code>GET http://localhost:4000/:groupId</code></p>
+        <h3 id="returns-and-errors">Returns and Errors</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Message</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>200</td>
+              <td>Group Object</td>
+              <td>Successfully returns a group object</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>Group does not exist in the database</td>
+              <td>Group doesn&#39;t exist</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>Invalid Cast Object</td>
+              <td>Wrong groupId</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="update-group">Update Group</h2>
+        <blockquote>
+          <p>Here is the body of the request: </p>
+        </blockquote> <pre class="highlight javascript"><code></code></pre>
+        <blockquote>
+          <p>Here is the return value: </p>
+        </blockquote> <pre class="highlight javascript"><code></code></pre>
+        <p>Creates the group in the specified user. Requires [Authorization] token. </p>
+        <h3 id="http-request">HTTP Request</h3>
+        <h3 id="query-parameters">Query Parameters</h3>
+        <h3 id="returns-and-errors">Returns and Errors</h3>
+        <h2 id="delete-group">Delete Group</h2>
+        <h1 id="tasks">Tasks</h1>
+        <h2 id="get-user-s-tasks">Get User&#39;s Tasks</h2>
+        <blockquote>
+          <p>Here is the return value of the get request:</p>
+        </blockquote> <pre class="highlight javascript"><code>[
+  {
+    <span class="hljs-attr">_id</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">dueDate</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">group</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">__v</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">category</span>: <span class="hljs-string">"Misc."</span>,
+    <span class="hljs-attr">importance</span>: [<span class="hljs-string">"urgent"</span>],
+    <span class="hljs-attr">status</span>: [<span class="hljs-string">"pending"</span>],
+    <span class="hljs-attr">createdDate</span>: <span class="hljs-literal">null</span>
+  },
+  {
+    <span class="hljs-attr">_id</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">dueDate</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">group</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">user</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">__v</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">category</span>: <span class="hljs-string">"Misc."</span>,
+    <span class="hljs-attr">importance</span>: [<span class="hljs-string">"urgent"</span>],
+    <span class="hljs-attr">status</span>: [<span class="hljs-string">"pending"</span>],
+    <span class="hljs-attr">createdDate</span>: <span class="hljs-literal">null</span>
+  }
+];</code></pre>
+        <p>Gets all user&#39;s tasks in every single group that the user is part of. Requires [Authorization] token.</p>
+        <h3 id="http-request">HTTP Request</h3>
+        <p><code>GET http://localhost:4000/tasks/:userId</code></p>
+        <h3 id="returns-and-errors">Returns and Errors</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Message</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>200</td>
+              <td>Array of Objects</td>
+              <td>Returns all the tasks that the user has</td>
+            </tr>
+            <tr>
+              <td>200</td>
+              <td>User does not have any groups</td>
+              <td>User has no groups associated to it</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>User does not exist in the database</td>
+              <td>There is no corresponding user to that ID</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>Cannot cast Object ID</td>
+              <td>userId is incorrect</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="create-task-in-group">Create Task in Group</h2>
+        <blockquote>
+          <p>Here is an example of the body of the request</p>
+        </blockquote> <pre class="highlight javascript"><code>{
+    <span class="hljs-attr">name</span>: <span class="hljs-string">"Name"</span>,
+    <span class="hljs-attr">importance</span>: <span class="hljs-string">"important"</span>,
+    <span class="hljs-attr">dueDate</span>:
+    category: <span class="hljs-string">"Chores"</span>
+    status: <span class="hljs-string">"pending"</span>
+}</code></pre>
+        <blockquote>
+          <p>This will return:</p>
+        </blockquote> <pre class="highlight javascript"><code>{
+        <span class="hljs-string">"_id"</span>: <span class="hljs-string">"Some Hash"</span>,
+        <span class="hljs-string">"name"</span>: <span class="hljs-string">"Name"</span>,
+        <span class="hljs-string">"dueDate"</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-string">"group"</span>: <span class="hljs-string">"The Group ID Specified"</span>,
+        <span class="hljs-string">"user"</span>: <span class="hljs-string">"The user specified"</span>,
+        <span class="hljs-string">"__v"</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">"category"</span>: <span class="hljs-string">"Chores"</span>,
+        <span class="hljs-string">"importance"</span>: [
+            <span class="hljs-string">"important"</span>
+        ],
+        <span class="hljs-string">"status"</span>: [
+            <span class="hljs-string">"pending"</span>
+        ],
+        <span class="hljs-string">"createdDate"</span>: <span class="hljs-literal">null</span>
+    }</code></pre>
+        <p>Creates a task inside of the group specified and associated to the user specified. Requires [Authorization] token.</p>
+        <h3 id="http-request">HTTP Request</h3>
+        <p><code>POST http://localhost:4000/tasks/:groupId/:userId</code></p>
+        <h3 id="query-parameters">Query Parameters</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Default</th>
+              <th>Required</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>name</td>
+              <td></td>
+              <td>true</td>
+              <td>String</td>
+              <td>The name of the task</td>
+            </tr>
+            <tr>
+              <td>importance</td>
+              <td>normal</td>
+              <td>false</td>
+              <td>String</td>
+              <td>Importance of the task. Must be one of the three: &quot;normal&quot;, &quot;important&quot;, &quot;urgent&quot;. Default is &quot;normal&quot;</td>
+            </tr>
+            <tr>
+              <td>dueDate</td>
+              <td></td>
+              <td>false</td>
+              <td>Date</td>
+              <td>The due date of the task</td>
+            </tr>
+            <tr>
+              <td>category</td>
+              <td>Misc.</td>
+              <td>false</td>
+              <td>String</td>
+              <td>The category of the task</td>
+            </tr>
+            <tr>
+              <td>status</td>
+              <td>pending</td>
+              <td>false</td>
+              <td>String</td>
+              <td>Status of the task. Must be one of the three: &quot;pending&quot;, &quot;ongoing&quot;, &quot;completed&quot;</td>
+            </tr>
+            <tr>
+              <td>createdDate</td>
+              <td>Date.now</td>
+              <td>true</td>
+              <td>Date</td>
+              <td>Creation date of the task</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 id="returns-and-errors">Returns and Errors</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Message</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>200</td>
+              <td>Task Obj</td>
+              <td>Successfully created the Task</td>
+            </tr>
+            <tr>
+              <td>200</td>
+              <td>There is no such user in the group</td>
+              <td>The user in question does not belong in this group</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>Group does not exist in the database</td>
+              <td>Invalid group</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>Invalid Cast Obj</td>
+              <td>Group ID is incorrect</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="get-user-s-tasks-in-group">Get User&#39;s Tasks in Group</h2>
+        <blockquote>
+          <p>Here is the return:</p>
+        </blockquote> <pre class="highlight javascript"><code>[
+  {
+    <span class="hljs-attr">_id</span>: <span class="hljs-string">"Some Hash"</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">dueDate</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">group</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">user</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">__v</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">category</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">importance</span>: [<span class="hljs-string">"important"</span>],
+    <span class="hljs-attr">status</span>: [<span class="hljs-string">"pending"</span>],
+    <span class="hljs-attr">createdDate</span>: <span class="hljs-literal">null</span>
+  }
+];</code></pre>
+        <p>Gets all of the specified users tasks inside the specified group. Requires [Authorization] token. The requester must belong to the group.</p>
+        <h3 id="http-request">HTTP Request</h3>
+        <p><code>GET http://localhost:4000/tasks/:groupId/:userId</code></p>
+        <h3 id="returns-and-errors">Returns and Errors</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Message</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>200</td>
+              <td>Array of Objects</td>
+              <td>Successfully return all the tasks</td>
+            </tr>
+            <tr>
+              <td>200</td>
+              <td>User does not exist</td>
+              <td>User doesn&#39;t belong in the group</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>Group does not exist in the database</td>
+              <td>The group doesn&#39;t exist</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>Invalid Cast Obj</td>
+              <td>GroupId doesn&#39;t exist</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="update-task">Update Task</h2>
+        <h2 id="delete-task">Delete Task</h2>
+        <h2 id="get-all-tasks">Get all Tasks</h2>
+        <blockquote>
+          <p>Here is the return:</p>
+        </blockquote> <pre class="highlight javascript"><code>[
+  {
+    <span class="hljs-attr">_id</span>: <span class="hljs-string">"Some Hash"</span>,
+    <span class="hljs-attr">name</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">dueDate</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">group</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">user</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">__v</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">category</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">importance</span>: [<span class="hljs-string">"important"</span>],
+    <span class="hljs-attr">status</span>: [<span class="hljs-string">"pending"</span>],
+    <span class="hljs-attr">createdDate</span>: <span class="hljs-literal">null</span>
+  }
+];</code></pre>
+        <aside class="notice">
+          <strong>This is an Admin route! </strong>
+        </aside>
+        <p>Gets all the tasks that belongs to every user in the database. Requires [Authorization] admin token.</p>
+        <h3 id="http-request">HTTP Request</h3>
+        <p><code>GET http://localhost:4000/tasks</code></p>
+        <h3 id="returns-and-errors">Returns and Errors</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Message</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>200</td>
+              <td>Array of Objects</td>
+              <td>Returns all the tasks in the database.</td>
+            </tr>
+            <tr>
+              <td>403</td>
+              <td>Access denied. User has no admin privileges.</td>
+              <td>Token does not possess administrator privileges.</td>
+            </tr>
+            <tr>
+              <td>401</td>
+              <td>Unauthorized</td>
+              <td>Means that there was no JWT placed into the authorization header.</td>
             </tr>
           </tbody>
         </table>
