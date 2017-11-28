@@ -7,7 +7,10 @@ language_tabs:
 
 includes:
   - main
+  - authentication
   - users
+  - groups
+  - tasks
   - _errors
 
 search: true
